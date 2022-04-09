@@ -1,6 +1,10 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
+using System.Data.Common;
+using System.Data;
 using System.Text;
+using MySql.Data.MySqlClient;
 
 namespace OurWayApiRest.DAL
 {
@@ -23,7 +27,7 @@ namespace OurWayApiRest.DAL
 
         public bool ExecuteNonQueryProc(string storedProcedure, params object[] parametros)
         {
-            SqlCommand cmd = (SqlCommand)_banco.Database.GetDbConnection().CreateCommand();
+            MySqlCommand cmd = (MySqlCommand)_banco.Database.GetDbConnection().CreateCommand();
             cmd.CommandType = CommandType.StoredProcedure;
             PreencherParametros(cmd, parametros);
             _banco.Database.OpenConnection();
