@@ -1,12 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace OurWayApiRest.DAL.Repositories.Contracts
 {
-    public interface IRepository<TEntity> : IDisposable //where TEntity : Entity
+    public interface IRepository<TEntity> : IDisposable
     {
         Task Insert(TEntity entity);
         Task Update(TEntity entity);

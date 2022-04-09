@@ -2,15 +2,51 @@
 using OurWayApiRest.Model;
 using System;
 using System.Collections.Generic;
-using System.Text;
+using System.Linq.Expressions;
 using System.Threading.Tasks;
 
 namespace OurWayApiRest.DAL.Repositories
 {
-    public class AdressRepository : Repository<Adress>, IAdressRepository
+    public class AdressRepository : IAdressRepository
     {
-        public AdressRepository(OurWayContext db) : base(db) {}
-        
+        public Task Delete(Guid id)
+        {
+            throw new NotImplementedException();
+        }
 
+        public void Dispose()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<IEnumerable<Adress>> GetAll()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<IEnumerable<Adress>> GetAll(Expression<Func<Adress, bool>> predicate)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<Adress> GetById(Guid id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task Insert(Adress entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<int> SaveChenges()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task Update(Adress entity)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
