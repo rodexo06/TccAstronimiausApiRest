@@ -9,7 +9,7 @@ namespace OurWayApiRest.DAL.Repositories
 {
     public class AdressRepository : IAdressRepository
     {
-        public Task Delete(Guid id)
+        public Task Delete(Adress entity)
         {
             throw new NotImplementedException();
         }
@@ -29,7 +29,7 @@ namespace OurWayApiRest.DAL.Repositories
             throw new NotImplementedException();
         }
 
-        public Task<Adress> GetById(Guid id)
+        public Task<Adress> GetById(Adress entity)
         {
             throw new NotImplementedException();
         }
