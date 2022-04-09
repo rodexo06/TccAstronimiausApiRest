@@ -10,6 +10,7 @@ namespace OurWayApiRest.Model
         public bool Enabled { get; set; }
         public DateTime DLastUpdate { get; set; }
         public DateTime DCreated { get; set; }
+        //a
 
     }
 }
