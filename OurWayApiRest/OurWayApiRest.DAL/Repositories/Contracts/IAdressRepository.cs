@@ -5,12 +5,9 @@ using System.Text;
 
 namespace OurWayApiRest.DAL.Repositories.Contracts
 {
-    interface IAdressRepository
+    interface IAdressRepository : IRepository<Adress>
     {
-        public List<Adress> AllAdress();
-        public Adress GetAdress(Adress adress);
-        public void InsertAdress(Adress adress);
-        public void UpdateAdress(Adress adress);
-        public void DeleteAdress(Adress adress);
+        // qualquer outro método
+        
     }
 }

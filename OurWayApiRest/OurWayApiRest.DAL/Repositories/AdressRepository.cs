@@ -3,34 +3,14 @@ using OurWayApiRest.Model;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace OurWayApiRest.DAL.Repositories
 {
-    class AdressRepository : IAdressRepository
+    public class AdressRepository : Repository<Adress>, IAdressRepository
     {
-        public List<Adress> AllAdress()
-        {
-            throw new NotImplementedException();
-        }
+        public AdressRepository(OurWayContext db) : base(db) {}
+        
 
-        public void DeleteAdress(Adress adress)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Adress GetAdress(Adress adress)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void InsertAdress(Adress adress)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void UpdateAdress(Adress adress)
-        {
-            throw new NotImplementedException();
-        }
     }
 }
