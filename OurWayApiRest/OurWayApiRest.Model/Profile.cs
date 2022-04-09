@@ -2,7 +2,7 @@
 
 namespace OurWayApiRest.Model
 {
-    class Profile
+    public class Profile
     {
         public int CIdProfile{ get; set; }
         public String SProfile{ get; set; }

@@ -2,7 +2,7 @@
 
 namespace OurWayApiRest.Model
 {
-    class User
+    public class User
     {
         public int CIdUser { get; set; }
         public string CLogin { get; set; }

@@ -4,7 +4,7 @@ using System.Text;
 
 namespace OurWayApiRest.Model
 {
-    class Trip
+    public class Trip
     {
         public int CIdTrip{ get; set; }
         public DateTime DTrip{ get; set; }
@@ -18,7 +18,7 @@ namespace OurWayApiRest.Model
   public string XTripReason { get; set; }
     }
 
-    class UserTrip
+    public class UserTrip
     {
         public int CIdUser{ get; set; }
         public int CIdTrip{ get; set; }

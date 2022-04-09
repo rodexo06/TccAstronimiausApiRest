@@ -4,7 +4,7 @@ using System.Text;
 
 namespace OurWayApiRest.Model
 {
-        class CheckinOut
+    public class CheckinOut
         {
             public int CIdCheckinOut { get; set; }
             public int CIdUser { get; set; }

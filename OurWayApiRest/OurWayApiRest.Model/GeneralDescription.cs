@@ -2,7 +2,7 @@
 
 namespace OurWayApiRest.Model
 {
-    class GeneralDescription
+    public class GeneralDescription
     {
         public int CIdGeneralDescription { get; set; }
         public string CIdDomainType { get; set; }

@@ -2,7 +2,7 @@
 
 namespace OurWayApiRest.Model
 {
-    class Adress
+    public class Adress
     {
         public int CIdAddress { get; set; }
         public string SStreet { get; set; }
@@ -32,7 +32,7 @@ namespace OurWayApiRest.Model
         }
     }
 
-    class UserAddress
+    public class UserAddress
     {
         public UserAddress(int cIdUser, int cIdAddress, bool enabled, DateTime dLastUpdate)
         {

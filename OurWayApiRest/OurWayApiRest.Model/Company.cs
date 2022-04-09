@@ -2,14 +2,14 @@
 
 namespace OurWayApiRest.Model
 {
-    class Company
+    public class Company
     {
         public int CIdCompany { get; set; }
         public string SCompany { get; set; }
         public bool Enabled { get; set; }
         public DateTime DLastUpdate { get; set; }
     }
-    class BranchCompany
+    public class BranchCompany
     {
         public int CIdCompany { get; set; }
         public int CIdBranch { get; set; }
