@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
 
-namespace OurWayApiRest.DAL.Repositories.Contracts
+namespace OurWayApiRest.BLL.Interfaces
 {
-    public interface IRepository<TEntity> : IDisposable
+    public interface IRepository<TEntity>
     {
         Task Insert(TEntity entity);
         Task Update(TEntity entity);

@@ -24,7 +24,14 @@ namespace OurWayApiRest.DAL
             _banco.Database.OpenConnection();
             return cmd.ExecuteReader(CommandBehavior.CloseConnection);
         }
-
+        public IDataReader ExecuteQuery(string sql, params object[] parametros)
+        {
+            var cmd = _banco.Database.GetDbConnection().CreateCommand();
+            cmd.CommandText = sql;
+            PreencherParametros(cmd, parametros);
+            _banco.Database.OpenConnection();
+            return cmd.ExecuteReader(CommandBehavior.CloseConnection);
+        }
         public bool ExecuteNonQueryProc(string storedProcedure, params object[] parametros)
         {
             MySqlCommand cmd = (MySqlCommand)_banco.Database.GetDbConnection().CreateCommand();

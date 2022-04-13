@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
@@ -17,7 +17,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\OurWayApiRest.BLL\OurWayApiRest.BLL.csproj" />
     <ProjectReference Include="..\OurWayApiRest.Model\OurWayApiRest.Model.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Repositories\Contracts\" />
   </ItemGroup>
 
 </Project>

@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using OurWayApiRest.Model;
 
 namespace OurWayApiRest.DAL
 {
@@ -9,6 +10,8 @@ namespace OurWayApiRest.DAL
     {
         public OurWayContext(DbContextOptions<OurWayContext> options) : base(options)
         {
+           // Database.EnsureCreated();
         }
+        public DbSet<Adress> Adress { get; set; }
     }
 }
