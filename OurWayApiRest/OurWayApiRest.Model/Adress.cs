@@ -1,9 +1,11 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace OurWayApiRest.Model
 {
     public class Adress
     {
+        [Key]
         public int CIdAddress { get; set; }
         public string SStreet { get; set; }
         public string SNumber { get; set; }

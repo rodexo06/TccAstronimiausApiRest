@@ -7,11 +7,15 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using OurWayApiRest.BLL.Interfaces;
 using OurWayApiRest.DAL;
+using OurWayApiRest.DAL.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Swashbuckle.AspNetCore.Swagger;
+using Microsoft.OpenApi.Models;
 
 namespace OurWayApiRest.API
 {
@@ -29,6 +33,12 @@ namespace OurWayApiRest.API
         {
             services.AddDbContext<OurWayContext>(opts => opts.UseMySQL(Configuration.GetConnectionString("MySqlConn")));
             services.AddControllers();
+            services.AddScoped<IAdressRepository, AdressRepository>();
+            services.AddScoped<IDBHelper, DBHelper>();
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Our Way", Version = "v1" });
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -38,6 +48,8 @@ namespace OurWayApiRest.API
             {
                 app.UseDeveloperExceptionPage();
             }
+            app.UseSwagger();
+            app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Our Way v1"));
 
             app.UseHttpsRedirection();
 
