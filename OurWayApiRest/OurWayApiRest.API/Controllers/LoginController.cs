@@ -25,7 +25,14 @@ namespace OurWayApiRest.API.Controllers
                 return CustomResponse();
             }
             //
-            return CustomResponse(loginViewModel);
+            var result = _repository.PostLogar(loginViewModel.UserName, loginViewModel.PassWord);
+            if (result == null)
+            {
+                NotificarErro("Login invalido!");
+                return CustomResponse();
+            }
+            //
+            return CustomResponse(result);
 
         }
     }
