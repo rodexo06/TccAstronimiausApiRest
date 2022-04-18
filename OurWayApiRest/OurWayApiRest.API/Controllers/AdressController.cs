@@ -19,8 +19,7 @@ namespace OurWayApiRest.API.Controllers
         [Route("enderecos")]
         public async Task<IEnumerable<Adress>> GetAll()
         {
-            var lista = await _repository.GetAll();
-            return lista;
+            return await _repository.GetAll();
         }
     }
 }
