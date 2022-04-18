@@ -16,6 +16,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Swashbuckle.AspNetCore.Swagger;
 using Microsoft.OpenApi.Models;
+using OurWayApiRest.BLL.Noticacoes;
 
 namespace OurWayApiRest.API
 {
@@ -34,6 +35,8 @@ namespace OurWayApiRest.API
             services.AddDbContext<OurWayContext>(opts => opts.UseMySQL(Configuration.GetConnectionString("MySqlConn")));
             services.AddControllers();
             services.AddScoped<IAdressRepository, AdressRepository>();
+            services.AddScoped<INotificador, Notificador>();
+            services.AddScoped<ILoginRepository, LoginRepository>();
             services.AddScoped<IDBHelper, DBHelper>();
             services.AddSwaggerGen(c =>
             {

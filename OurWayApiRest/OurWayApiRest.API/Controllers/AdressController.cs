@@ -10,19 +10,17 @@ namespace OurWayApiRest.API.Controllers
     public class AdressController : MainController
     {
         private readonly IAdressRepository _repository;
-        private readonly IDBHelper _db;
-        public AdressController(IAdressRepository repository, IDBHelper db)
+        public AdressController(IAdressRepository repository, INotificador notificador) : base(notificador)
         {
             _repository = repository;
-            _db = db;
 
         }
         [HttpGet]
         [Route("enderecos")]
         public async Task<IEnumerable<Adress>> GetAll()
         {
-            var teste =  await _repository.GetAll();
-            return teste;
+            var lista = await _repository.GetAll();
+            return lista;
         }
     }
 }
