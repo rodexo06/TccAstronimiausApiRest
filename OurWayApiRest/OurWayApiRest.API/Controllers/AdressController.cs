@@ -16,11 +16,16 @@ namespace OurWayApiRest.API.Controllers
 
         }
         [HttpGet]
-        [Route("enderecos")]
-        public async Task<IEnumerable<Adress>> GetAll()
+        [Route("getall")]
+        public async Task<IActionResult> GetAll()
         {
-            var lista = await _repository.GetAll();
-            return lista;
+            var result = await _repository.GetAll();
+            if (result == null)
+            {
+                NotificarErro("endereço não encontrado!");
+                return CustomResponse();
+            }
+            return CustomResponse(result);
         }
     }
 }

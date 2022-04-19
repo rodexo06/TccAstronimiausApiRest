@@ -37,6 +37,7 @@ namespace OurWayApiRest.API
             services.AddScoped<IAdressRepository, AdressRepository>();
             services.AddScoped<INotificador, Notificador>();
             services.AddScoped<ILoginRepository, LoginRepository>();
+            services.AddScoped<ITripRepository, TripRepository>();
             services.AddScoped<IDBHelper, DBHelper>();
             services.AddSwaggerGen(c =>
             {

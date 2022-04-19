@@ -7,6 +7,7 @@ using System.Linq;
 namespace OurWayApiRest.API.Controllers
 {
     [ApiController]
+    [Route("[Controller]")]
     public abstract class MainController : ControllerBase
     {
         private readonly INotificador _notificador;

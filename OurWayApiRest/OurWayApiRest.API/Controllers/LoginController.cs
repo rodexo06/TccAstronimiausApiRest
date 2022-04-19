@@ -17,15 +17,22 @@ namespace OurWayApiRest.API.Controllers
         }
         [HttpPost]
         [Route("Logar")]
-        public IActionResult Logar(LoginViewModel loginViewModel)
+        public IActionResult Logar(LoginViewModel login)
         {
-            if ((string.IsNullOrEmpty(loginViewModel.UserName)) && (string.IsNullOrEmpty(loginViewModel.PassWord))) 
+            if ((string.IsNullOrEmpty(login.UserName)) && (string.IsNullOrEmpty(login.PassWord))) 
             {
                 NotificarErro("usuario ou senha não podem ser nulo");
                 return CustomResponse();
+            }   
+            //
+            var result = _repository.PostLogar(login.UserName, login.PassWord);
+            if (result == null)
+            {
+                NotificarErro("usuario não encontrado!");
+                return CustomResponse();
             }
             //
-            return CustomResponse(loginViewModel);
+            return CustomResponse(result);
 
         }
     }
