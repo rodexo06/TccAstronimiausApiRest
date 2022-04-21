@@ -48,10 +48,11 @@ namespace OurWayApiRest.DAL.Repositories
             return await DbSet.FindAsync(entity);
         }
 
-        public virtual async Task Insert(TEntity entity)
+        public virtual async Task<TEntity> Insert(TEntity entity)
         {
             DbSet.Add(entity);
             await SaveChenges();
+            return entity;
         }
 
         public async Task<int> SaveChenges()
@@ -59,10 +60,16 @@ namespace OurWayApiRest.DAL.Repositories
             return await _context.SaveChangesAsync();
         }
 
-        public virtual async Task Update(TEntity entity)
+        public virtual async Task<TEntity> Update(TEntity entity)
         {
             DbSet.Update(entity);
             await SaveChenges();
+            return entity;
+        }
+
+        Task<TEntity> IRepository<TEntity>.Delete(TEntity entity)
+        {
+            throw new NotImplementedException();
         }
     }
 }

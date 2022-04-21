@@ -7,9 +7,9 @@ namespace OurWayApiRest.BLL.Interfaces
 {
     public interface IRepository<TEntity>
     {
-        Task Insert(TEntity entity);
-        Task Update(TEntity entity);
-        Task Delete(TEntity entity);
+        Task<TEntity> Insert(TEntity entity);
+        Task<TEntity> Update(TEntity entity);
+        Task<TEntity> Delete(TEntity entity);
         Task<TEntity> GetById(TEntity entity);
         Task<IEnumerable<TEntity>> GetAll();
         Task<IEnumerable<TEntity>> GetAll(Expression<Func<TEntity, bool>> predicate);
