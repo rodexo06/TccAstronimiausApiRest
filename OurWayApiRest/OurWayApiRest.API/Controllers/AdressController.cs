@@ -20,6 +20,7 @@ namespace OurWayApiRest.API.Controllers
         [Route("Update")]
         public IActionResult Update(Adress model)
         {
+<<<<<<< HEAD
             try
             {
                 var result = _repository.Update(model).Result;
@@ -78,6 +79,9 @@ namespace OurWayApiRest.API.Controllers
                 NotificarErro("problema encontrado!");
                 return CustomResponse();
             }
+=======
+            return await _repository.GetAll();
+>>>>>>> 6187bc0be528b798438b9c5409c669660344a01f
         }
     }
 }
