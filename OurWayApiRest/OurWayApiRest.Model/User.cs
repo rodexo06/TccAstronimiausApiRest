@@ -13,10 +13,10 @@ namespace OurWayApiRest.Model
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy-MM-dd}")]
 
         [DataType(DataType.Date, ErrorMessage = "Data em formato inválido")]
-        public string dLastUpdate { get; set; }
+        public DateTime dLastUpdate { get; set; }
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy-MM-dd}")]
 
         [DataType(DataType.Date, ErrorMessage = "Data em formato inválido")]
-        public string dCreated { get; set; }
+        public DateTime dCreated { get; set; }
     }
 }

@@ -35,5 +35,43 @@ namespace OurWayApiRest.API.Controllers
             return CustomResponse(result);
 
         }
+        [HttpPut]
+        [Route("Update")]
+        public IActionResult Update(Login model)
+        {
+            var result = _repository.Update(model).Result;
+            //
+            if (result == null)
+            {
+                NotificarErro("login não encontrado!");
+                return CustomResponse();
+            }
+            return CustomResponse(result);
+        }
+        [HttpPost]
+        [Route("Insert")]
+        public IActionResult Insert(Login model)
+        {
+            var result = _repository.Insert(model).Result;
+            //
+            if (result == null)
+            {
+                NotificarErro("login não encontrado!");
+                return CustomResponse();
+            }
+            return CustomResponse(result);
+        }
+        [HttpGet]
+        [Route("GetAll")]
+        public async Task<IActionResult> GetAll()
+        {
+            var result = await _repository.GetAll();
+            if (result == null)
+            {
+                NotificarErro("login não encontrado!");
+                return CustomResponse();
+            }
+            return CustomResponse(result);
+        }
     }
 }

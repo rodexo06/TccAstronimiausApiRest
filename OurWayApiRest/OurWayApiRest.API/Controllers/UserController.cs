@@ -17,11 +17,76 @@ namespace OurWayApiRest.API.Controllers
 
         }
         [HttpPut]
-        public IActionResult Update(User user)
+        [Route("Update")]
+        public IActionResult Update(User model)
         {
-            user.dLastUpdate = DateTime.Now.ToString();
-           var result = _repository.Update(user).Result;
-            //
+            try
+            {
+                model.dLastUpdate = DateTime.Now;
+                var result = _repository.Update(model).Result;
+                //
+                if (result == null)
+                {
+                    NotificarErro("usuario não encontrado!");
+                    return CustomResponse();
+                }
+                return CustomResponse(result);
+            }
+            catch (Exception)
+            {
+                NotificarErro("problema encontrado!");
+                return CustomResponse();
+            }
+            
+        }
+        [HttpPost]
+        [Route("Insert")]
+        public IActionResult Insert(User model)
+        {
+            try
+            {
+                model.dLastUpdate = DateTime.Now;
+                var result = _repository.Insert(model).Result;
+                //
+                if (result == null)
+                {
+                    NotificarErro("usuario não encontrado!");
+                    return CustomResponse();
+                }
+                return CustomResponse(result);
+            }
+            catch (Exception)
+            {
+                NotificarErro("problema encontrado!");
+                return CustomResponse();
+            }            
+        }
+        [HttpGet]
+        [Route("GetById")]
+        public async Task<IActionResult> GetById(int id)
+        {
+
+            try
+            {
+                var result = await _repository.GetById(new User() { cIdUser = id });
+                if (result == null)
+                {
+                    NotificarErro("usuario não encontrado!");
+                    return CustomResponse();
+                }
+                return CustomResponse(result);
+            }
+            catch (Exception)
+            {
+                NotificarErro("problema encontrado!");
+                return CustomResponse();
+            }
+        }
+        [HttpGet]
+        [Route("GetAll")]
+        public async Task<IActionResult> GetAll()
+        {
+            var result = await _repository.GetAll();
             if (result == null)
             {
                 NotificarErro("usuario não encontrado!");

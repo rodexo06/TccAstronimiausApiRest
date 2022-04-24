@@ -40,5 +40,29 @@ WHERE cIdUser = @cIdUser
 
             return entity;
         }
+        public override async Task<User> Insert(User entity)
+        {
+            bool valida = false;
+            using (var connection = new MySqlConnection(_connectionString))
+            {
+                connection.Open();
+                string query = "INSERT INTO user(cIdUser, cLogin, sUserName, sEmail, enabled, dLastUpdate, dCreated) VALUES (@cIdUser, @cLogin, @sUserName, @sEmail, @enabled, @dLastUpdate, @dCreated)";
+                valida = connection.Execute(query, entity) == 1;
+            }
+            if (!valida) return null;
+
+            return entity;
+        }
+
+        public override async Task<User> GetById(User entity)
+        {
+            using (var connection = new MySqlConnection(_connectionString))
+            {
+                var id = entity.cIdUser;
+                connection.Open();
+                string query = "SELECT * FROM user WHERE cIdUser = @id";
+                return connection.QuerySingleOrDefault<User>(query, new { id });
+            }
+        }
     }
 }

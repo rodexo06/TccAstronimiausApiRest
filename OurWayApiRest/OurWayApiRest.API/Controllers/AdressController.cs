@@ -4,6 +4,7 @@ using OurWayApiRest.Model;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using OurWayApiRest.DAL;
+using System;
 
 namespace OurWayApiRest.API.Controllers
 {
@@ -15,17 +16,68 @@ namespace OurWayApiRest.API.Controllers
             _repository = repository;
 
         }
+        [HttpPut]
+        [Route("Update")]
+        public IActionResult Update(Adress model)
+        {
+            try
+            {
+                var result = _repository.Update(model).Result;
+                //
+                if (result == null)
+                {
+                    NotificarErro("endereço não encontrado!");
+                    return CustomResponse();
+                }
+                return CustomResponse(result);
+            }
+            catch (Exception)
+            {
+                NotificarErro("problema encontrado!");
+                return CustomResponse();
+            }
+            
+        }
+        [HttpPost]
+        [Route("Insert")]
+        public IActionResult Insert(Adress model)
+        {
+            try
+            {
+                var result = _repository.Insert(model).Result;
+                //
+                if (result == null)
+                {
+                    NotificarErro("endereço não encontrado!");
+                    return CustomResponse();
+                }
+                return CustomResponse(result);
+            }
+            catch (Exception)
+            {
+                NotificarErro("problema encontrado!");
+                return CustomResponse();
+            }
+        }
         [HttpGet]
         [Route("getall")]
         public async Task<IActionResult> GetAll()
         {
-            var result = await _repository.GetAll();
-            if (result == null)
+            try
             {
-                NotificarErro("endereço não encontrado!");
+                var result = await _repository.GetAll();
+                if (result == null)
+                {
+                    NotificarErro("endereço não encontrado!");
+                    return CustomResponse();
+                }
+                return CustomResponse(result);
+            }
+            catch (Exception)
+            {
+                NotificarErro("problema encontrado!");
                 return CustomResponse();
             }
-            return CustomResponse(result);
         }
     }
 }
