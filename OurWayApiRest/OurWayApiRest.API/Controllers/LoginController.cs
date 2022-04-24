@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using OurWayApiRest.DAL;
 using OurWayApiRest.API.ViewModels;
+using System;
 
 namespace OurWayApiRest.API.Controllers
 {
@@ -32,16 +33,6 @@ namespace OurWayApiRest.API.Controllers
                 return CustomResponse();
             }
             //
-<<<<<<< HEAD
-=======
-            var result = _repository.PostLogar(loginViewModel.UserName, loginViewModel.PassWord);
-            if (result == null)
-            {
-                NotificarErro("Login invalido!");
-                return CustomResponse();
-            }
-            //
->>>>>>> 6187bc0be528b798438b9c5409c669660344a01f
             return CustomResponse(result);
 
         }
@@ -82,6 +73,27 @@ namespace OurWayApiRest.API.Controllers
                 return CustomResponse();
             }
             return CustomResponse(result);
+        }
+        [HttpGet]
+        [Route("GetById")]
+        public async Task<IActionResult> GetById(int id)
+        {
+
+            try
+            {
+                var result = await _repository.GetById(new Login() {CIdUser  = id });
+                if (result == null)
+                {
+                    NotificarErro("login não encontrado!");
+                    return CustomResponse();
+                }
+                return CustomResponse(result);
+            }
+            catch (Exception)
+            {
+                NotificarErro("problema encontrado!");
+                return CustomResponse();
+            }
         }
     }
 }

@@ -71,5 +71,26 @@ namespace OurWayApiRest.API.Controllers
             }
             return CustomResponse(result);
         }
+        [HttpGet]
+        [Route("GetById")]
+        public async Task<IActionResult> GetById(int id)
+        {
+
+            try
+            {
+                var result = await _repository.GetById(new Trip() { CIdTrip = id });
+                if (result == null)
+                {
+                    NotificarErro("Viagem não encontrado!");
+                    return CustomResponse();
+                }
+                return CustomResponse(result);
+            }
+            catch (Exception)
+            {
+                NotificarErro("problema encontrado!");
+                return CustomResponse();
+            }
+        }
     }
 }

@@ -17,6 +17,10 @@ namespace OurWayApiRest.Model
         public string YCoord { get; set; }
         public bool Enabled { get; set; }
         public DateTime DLastUpdate { get; set; }
+        public Adress()
+        {
+
+        }
 
         public Adress(int cIdAddress, string sStreet, string sNumber, string sComplement, string sZipCode, int cIdState, int cIdCountry, string xCoord, string yCoord, bool enabled, DateTime dLastUpdate)
         {
@@ -36,6 +40,10 @@ namespace OurWayApiRest.Model
 
     public class UserAddress
     {
+        public UserAddress()
+        {
+
+        }
         public UserAddress(int cIdUser, int cIdAddress, bool enabled, DateTime dLastUpdate)
         {
             this.CIdUser = cIdUser;
