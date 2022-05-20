@@ -2,9 +2,7 @@
 using MySql.Data.MySqlClient;
 using OurWayApiRest.BLL.Interfaces;
 using OurWayApiRest.Model;
-using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace OurWayApiRest.DAL.Repositories
@@ -53,7 +51,6 @@ WHERE cIdUser = @cIdUser
 
             return entity;
         }
-
         public override async Task<User> GetById(User entity)
         {
             using (var connection = new MySqlConnection(_connectionString))
@@ -62,6 +59,15 @@ WHERE cIdUser = @cIdUser
                 connection.Open();
                 string query = "SELECT * FROM user WHERE cIdUser = @id";
                 return connection.QuerySingleOrDefault<User>(query, new { id });
+            }
+        }
+        public override async Task<IEnumerable<User>> GetAll()
+        {
+            using (var connection = new MySqlConnection(_connectionString))
+            {
+                connection.Open();
+                var query = "SELECT * FROM user";
+                return await connection.QueryAsync<User>(query);
             }
         }
     }

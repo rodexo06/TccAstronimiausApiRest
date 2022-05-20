@@ -10,5 +10,6 @@ namespace OurWayApiRest.BLL.Interfaces
     {
         Task<IEnumerable<Trip>> GetByBranch(int id);
         Task<IEnumerable<Trip>> GetByDate(DateTime dataInicio, DateTime dataFinal);
+
     }
 }

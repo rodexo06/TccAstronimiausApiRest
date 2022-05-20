@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using MySQL.Data.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Data.Common;

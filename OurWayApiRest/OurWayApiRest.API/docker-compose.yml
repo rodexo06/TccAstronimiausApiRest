@@ -1,0 +1,19 @@
+version: "3"
+
+services:
+
+    OurWayApiRest-api:
+        image: desenvolvedorio/nerdstore-sql-server:latest
+        container_name: OurWayApiRest  
+        build: 
+            context: ../OurWayApiRest.API
+            dockerfile: ./Dockerfile
+        restart: always 
+        environment: 
+            - ASPNETCORE_ENVIRONMENT=Production
+            - ASPNETCORE_URLS=https://+:5001;http://+5000
+        volumes:
+            - ./certs:/https:ro
+
+volumes:
+    dpkeys:     
